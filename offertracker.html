@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Casino Offers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0 20px;
+        }
+
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .rating-score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.3rem;
+        }
+
+        .offer-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-info {
+            background: white;
+            color: #003d82;
+            border: 2px solid #003d82;
+        }
+
+        .btn-info:hover {
+            background: #f8f9fa;
+        }
+
+        .btn-claim {
+            background: #003d82;
+            color: white;
+        }
+
+        .btn-claim:hover {
+            background: #002a5c;
+            transform: scale(1.02);
+        }
+
+        .deposit-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .deposit-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .deposit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deposit-list li::before {
+            content: "●";
+            color: #003d82;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .deposit-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .bonus-details {
+            margin: 20px 0;
+        }
+
+        .bonus-details h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .bonus-text {
+            color: #999;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            color: #999;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .vote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .vote-label {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .vote-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .vote-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .vote-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .vote-btn.thumbs-up:hover {
+            color: #4CAF50;
+        }
+
+        .vote-btn.thumbs-down:hover {
+            color: #f44336;
+        }
+
+        .compare-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #003d82;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .compare-btn:hover {
+            border-color: #003d82;
+            background: #f8f9fa;
+        }
+
+        .card-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+        }
+
+        .card-details.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+        }
+
+        .btn-info {
+            position: relative;
+        }
+
+        .btn-info::after {
+            content: ' ▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-info.active::after {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎰 Top Casino Offers</h1>
+        
+        <div class="cards-grid">
+            <!-- Card 1: Alf Casino -->
+            <div class="card">
+                <div class="rank-badge">1</div>
+                
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="https://i.postimg.cc/Qd8RYFX0/alf-casino.png" alt="Alf Casino">
+                    </div>
+                </div>
+
+
+                <div class="rating">
+                    <span class="rating-score">4.5 / 5</span>
+                    <span class="star">⭐</span>
+                </div>
+
+                <h2 class="offer-title">Alf Casino</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin: 10px 0;">120% up to $360 + 100 FS</p>
+
+                <div class="buttons">
+                    <button class="btn btn-info" onclick="toggleDetails(this)">INFO</button>
+                    <button class="btn btn-claim" data-tracking="https://alcw.monalvor.com/?mid=100089_1949694">CLAIM</button>
+                </div>
+
+                <div class="card-details">
+                    <div class="bonus-details">
+                        <h3>Casino Information</h3>
+                        <ul class="deposit-list">
+                            <li><span class="deposit-label">Operator:</span> Rabidi N.V.</li>
+                            <li><span class="deposit-label">License:</span> Curaçao (Antillephone 8048/JAZ)</li>
+                            <li><span class="deposit-label">Year Launched:</span> 2018</li>
+                            <li><span class="deposit-label">Game Count:</span> ~9,000–10,000 games</li>
+                            <li><span class="deposit-label">Payout RTP:</span> ~96%</li>
+                            <li><span class="deposit-label">Min Deposit:</span> C$10</li>
+                            <li><span class="deposit-label">Min Withdrawal:</span> C$10–C$20</li>
+                            <li><span class="deposit-label">Withdrawal Speed:</span> 0–3 banking days</li>
+                            <li><span class="deposit-label">Withdrawal Limits:</span> ~C$10,500/month base; higher for VIP</li>
+                            <li><span class="deposit-label">Wagering Requirements:</span> 35x–40x on bonuses</li>
+                            <li><span class="deposit-label">VIP Program:</span> Points-based loyalty with ~5 tiers</li>
+                            <li><span class="deposit-label">Support:</span> 24/7 live chat + email</li>
+                            <li><span class="deposit-label">Currencies:</span> CAD, EUR, USD + crypto</li>
+                        </ul>
+                        <h3 style="margin-top: 20px;">Payment Methods</h3>
+                        <p class="bonus-text">Visa, MasterCard, Interac, Skrill, Neteller, Bank Transfer, Paysafecard, AstroPay, Neosurf, Jeton, Payz, MiFinity, eZeeWallet, Bitcoin, Ethereum, Litecoin, Tether (USDT)</p>
+                        <h3 style="margin-top: 20px;">Game Providers</h3>
+                        <p class="bonus-text">NetEnt, Microgaming, Evolution, Pragmatic Play, Play'n GO, Yggdrasil, Thunderkick, Betsoft, Quickspin</p>
+                    </div>
+
+                    <div class="disclaimer">
+                        19+, play responsibly. Standard KYC before first withdrawal.
+                    </div>
+
+                    <div class="vote-section">
+                        <span class="vote-label">Rate this Bonus</span>
+                        <div class="vote-buttons">
+                            <button class="vote-btn thumbs-up">
+                                👍 <span>42</span>
+                            </button>
+                            <button class="vote-btn thumbs-down">
+                                👎 <span>8</span>
+                            </button>
+                            <button class="compare-btn">COMPARE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Wazamba Casino -->
+            <div class="card">
+                <div class="rank-badge">2</div>
+                
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="https://i.postimg.cc/SKDQt0FR/wazamba-casino.png" alt="Wazamba Casino">
+                    </div>
+                </div>
+
+
+                <div class="rating">
+                    <span class="rating-score">4.3 / 5</span>
+                    <span class="star">⭐</span>
+                </div>
+
+                <h2 class="offer-title">Wazamba Casino</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin: 10px 0;">100% up to €500 + 200 FS + 1 Bonus Crab</p>
+
+                <div class="buttons">
+                    <button class="btn btn-info" onclick="toggleDetails(this)">INFO</button>
+                    <button class="btn btn-claim" data-tracking="https://wzbw.monalvor.com/?mid=100089_1949697">CLAIM</button>
+                </div>
+
+                <div class="card-details">
+                    <div class="bonus-details">
+                        <h3>Casino Information</h3>
+                        <ul class="deposit-list">
+                            <li><span class="deposit-label">Operator:</span> Rabidi N.V.</li>
+                            <li><span class="deposit-label">License:</span> Curaçao (8048/JAZ)</li>
+                            <li><span class="deposit-label">Year Launched:</span> 2019</li>
+                            <li><span class="deposit-label">Game Count:</span> 5,000+ games</li>
+                            <li><span class="deposit-label">Payout RTP:</span> ~94%</li>
+                            <li><span class="deposit-label">Min Deposit:</span> C$10</li>
+                            <li><span class="deposit-label">Min Withdrawal:</span> C$10–C$20</li>
+                            <li><span class="deposit-label">Withdrawal Speed:</span> &lt;24h approval</li>
+                            <li><span class="deposit-label">Withdrawal Limits:</span> VIP leagues raise limits</li>
+                            <li><span class="deposit-label">Wagering Requirements:</span> ~35x bonus / ~40x FS</li>
+                            <li><span class="deposit-label">VIP Program:</span> League/coins loyalty with 5 levels; cashback up to ~20%</li>
+                            <li><span class="deposit-label">Support:</span> 24/7 live chat + email</li>
+                            <li><span class="deposit-label">Currencies:</span> CAD, EUR, USD + crypto</li>
+                        </ul>
+                        <h3 style="margin-top: 20px;">Payment Methods</h3>
+                        <p class="bonus-text">Visa, MasterCard, Interac, iDebit, Skrill, Neteller, MiFinity, Paysafecard, Bitcoin, Tether (USDT)</p>
+                        <h3 style="margin-top: 20px;">Game Providers</h3>
+                        <p class="bonus-text">Play'n GO, Pragmatic Play, Microgaming, Iron Dog, NetEnt, Yggdrasil, BGaming, Booongo, Evolution</p>
+                    </div>
+
+                    <div class="disclaimer">
+                        19+, play responsibly. KYC + proof of payment ownership before withdrawal.
+                    </div>
+
+                    <div class="vote-section">
+                        <span class="vote-label">Rate this Bonus</span>
+                        <div class="vote-buttons">
+                            <button class="vote-btn thumbs-up">
+                                👍 <span>38</span>
+                            </button>
+                            <button class="vote-btn thumbs-down">
+                                👎 <span>12</span>
+                            </button>
+                            <button class="compare-btn">COMPARE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Cadoola -->
+            <div class="card">
+                <div class="rank-badge">3</div>
+                
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="https://i.postimg.cc/vHMjD46G/cadoola.png" alt="Cadoola">
+                    </div>
+                </div>
+
+
+                <div class="rating">
+                    <span class="rating-score">4.2 / 5</span>
+                    <span class="star">⭐</span>
+                </div>
+
+                <h2 class="offer-title">Cadoola</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin: 10px 0;">Welcome Bonus Package worth up to €800 + 300 Free Spins</p>
+
+                <div class="buttons">
+                    <button class="btn btn-info" onclick="toggleDetails(this)">INFO</button>
+                    <button class="btn btn-claim" data-tracking="https://cadw.monalvor.com/?mid=100089_1949698">CLAIM</button>
+                </div>
+
+                <div class="card-details">
+                    <div class="bonus-details">
+                        <h3>Casino Information</h3>
+                        <ul class="deposit-list">
+                            <li><span class="deposit-label">Operator:</span> Araxio Development N.V.</li>
+                            <li><span class="deposit-label">License:</span> Curaçao Gaming Authority</li>
+                            <li><span class="deposit-label">Year Launched:</span> 2021</li>
+                            <li><span class="deposit-label">Game Count:</span> ~13,800 games</li>
+                            <li><span class="deposit-label">Payout RTP:</span> Mid-90s across slots</li>
+                            <li><span class="deposit-label">Min Deposit:</span> C$20</li>
+                            <li><span class="deposit-label">Min Withdrawal:</span> C$20</li>
+                            <li><span class="deposit-label">Withdrawal Speed:</span> 24–72h after approval</li>
+                            <li><span class="deposit-label">Withdrawal Limits:</span> Increase with VIP tier</li>
+                            <li><span class="deposit-label">Wagering Requirements:</span> ~35x on bonuses</li>
+                            <li><span class="deposit-label">VIP Program:</span> Tiered VIP with cashback, higher limits, personal manager</li>
+                            <li><span class="deposit-label">Support:</span> 24/7 live chat + email</li>
+                            <li><span class="deposit-label">Currencies:</span> CAD, EUR, USD + crypto</li>
+                        </ul>
+                        <h3 style="margin-top: 20px;">Payment Methods</h3>
+                        <p class="bonus-text">Interac, Visa, MasterCard, Skrill, Neteller, Cryptos (BTC, ETH, LTC, XRP)</p>
+                        <h3 style="margin-top: 20px;">Game Providers</h3>
+                        <p class="bonus-text">Microgaming, NetEnt, Yggdrasil, Play'n GO, Pragmatic Play, Evolution, Quickfire/Quickspin</p>
+                    </div>
+
+                    <div class="disclaimer">
+                        19+, play responsibly. KYC required to withdraw.
+                    </div>
+
+                    <div class="vote-section">
+                        <span class="vote-label">Rate this Bonus</span>
+                        <div class="vote-buttons">
+                            <button class="vote-btn thumbs-up">
+                                👍 <span>35</span>
+                            </button>
+                            <button class="vote-btn thumbs-down">
+                                👎 <span>10</span>
+                            </button>
+                            <button class="compare-btn">COMPARE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: SGcasino -->
+            <div class="card">
+                <div class="rank-badge">4</div>
+                
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="https://i.postimg.cc/prQ6qH3b/sgcasino.png" alt="SGcasino">
+                    </div>
+                </div>
+
+
+                <div class="rating">
+                    <span class="rating-score">4.0 / 5</span>
+                    <span class="star">⭐</span>
+                </div>
+
+                <h2 class="offer-title">SGcasino</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin: 10px 0;">100% up to $750 + 200 Free Spins</p>
+
+                <div class="buttons">
+                    <button class="btn btn-info" onclick="toggleDetails(this)">INFO</button>
+                    <button class="btn btn-claim" data-tracking="https://sgc.monalvor.com/?mid=125201_1949692">CLAIM</button>
+                </div>
+
+                <div class="card-details">
+                    <div class="bonus-details">
+                        <h3>Casino Information</h3>
+                        <ul class="deposit-list">
+                            <li><span class="deposit-label">Operator:</span> Offshore group brand</li>
+                            <li><span class="deposit-label">License:</span> Curaçao/Anjouan offshore license</li>
+                            <li><span class="deposit-label">Year Launched:</span> ~2022</li>
+                            <li><span class="deposit-label">Game Count:</span> ~4,000–6,000 games</li>
+                            <li><span class="deposit-label">Payout RTP:</span> Not consistently stated</li>
+                            <li><span class="deposit-label">Min Deposit:</span> C$10–C$20</li>
+                            <li><span class="deposit-label">Min Withdrawal:</span> ~C$10–C$20</li>
+                            <li><span class="deposit-label">Withdrawal Speed:</span> 1–3 days after approval</li>
+                            <li><span class="deposit-label">Withdrawal Limits:</span> ~€1,500/day and ~€20,000/month</li>
+                            <li><span class="deposit-label">Wagering Requirements:</span> ~35x on welcome promos</li>
+                            <li><span class="deposit-label">VIP Program:</span> Personal manager, tailored deals, higher limits, cashback</li>
+                            <li><span class="deposit-label">Support:</span> 24/7 live chat + email</li>
+                            <li><span class="deposit-label">Currencies:</span> CAD, EUR, USD + wide crypto set</li>
+                        </ul>
+                        <h3 style="margin-top: 20px;">Payment Methods</h3>
+                        <p class="bonus-text">Interac, Neosurf, Payz, MiFinity, MuchBetter, Flexepin, eVoucher, Jeton, eZeeWallet, Crypto (BTC, ETH, LTC, XRP, USDT, BCH)</p>
+                        <h3 style="margin-top: 20px;">Game Providers</h3>
+                        <p class="bonus-text">1x2 Gaming, 3 Oaks, Amatic, Amusnet, Pragmatic Play, Evolution, Play'n GO, BGaming</p>
+                    </div>
+
+                    <div class="disclaimer">
+                        19+, play responsibly. KYC before withdrawals.
+                    </div>
+
+                    <div class="vote-section">
+                        <span class="vote-label">Rate this Bonus</span>
+                        <div class="vote-buttons">
+                            <button class="vote-btn thumbs-up">
+                                👍 <span>30</span>
+                            </button>
+                            <button class="vote-btn thumbs-down">
+                                👎 <span>14</span>
+                            </button>
+                            <button class="compare-btn">COMPARE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: BoaBoa Casino -->
+            <div class="card">
+                <div class="rank-badge">5</div>
+                
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="https://i.postimg.cc/ydZ539PH/boaboa.png" alt="BoaBoa Casino">
+                    </div>
+                </div>
+
+
+                <div class="rating">
+                    <span class="rating-score">3.9 / 5</span>
+                    <span class="star">⭐</span>
+                </div>
+
+                <h2 class="offer-title">BoaBoa Casino</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin: 10px 0;">Welcome bonus 100% up to €500 + 200 FS + 1 Bonus Crab</p>
+
+                <div class="buttons">
+                    <button class="btn btn-info" onclick="toggleDetails(this)">INFO</button>
+                    <button class="btn btn-claim" data-tracking="https://bbaw.monalvor.com/?mid=100089_1949696">CLAIM</button>
+                </div>
+
+                <div class="card-details">
+                    <div class="bonus-details">
+                        <h3>Casino Information</h3>
+                        <ul class="deposit-list">
+                            <li><span class="deposit-label">Operator:</span> Rabidi N.V.</li>
+                            <li><span class="deposit-label">License:</span> Anjouan license</li>
+                            <li><span class="deposit-label">Year Launched:</span> 2017–2018</li>
+                            <li><span class="deposit-label">Game Count:</span> 4,000–7,600 games</li>
+                            <li><span class="deposit-label">Payout RTP:</span> ~96%</li>
+                            <li><span class="deposit-label">Min Deposit:</span> C$10–C$20</li>
+                            <li><span class="deposit-label">Min Withdrawal:</span> C$10–C$20</li>
+                            <li><span class="deposit-label">Withdrawal Speed:</span> Up to 48h; 0–5 banking days</li>
+                            <li><span class="deposit-label">Withdrawal Limits:</span> ~C$500/day, ~C$7,000/month base; higher for VIP</li>
+                            <li><span class="deposit-label">Wagering Requirements:</span> ~35x on welcome</li>
+                            <li><span class="deposit-label">VIP Program:</span> 5-level loyalty ladder; perks and limits grow by tier</li>
+                            <li><span class="deposit-label">Support:</span> 24/7 live chat + email</li>
+                            <li><span class="deposit-label">Currencies:</span> CAD, EUR, USD + crypto</li>
+                        </ul>
+                        <h3 style="margin-top: 20px;">Payment Methods</h3>
+                        <p class="bonus-text">Visa, MasterCard, Interac, Skrill, Neteller, Jeton, MiFinity, Payz, Neosurf, Klarna/Instant Bank, Rapid Transfer, Crypto (BTC, ETH, LTC, USDT, USDC, XRP, DOGE)</p>
+                        <h3 style="margin-top: 20px;">Game Providers</h3>
+                        <p class="bonus-text">Amatic, Amusnet, NetEnt, Play'n GO, Pragmatic Play, Evolution, Yggdrasil, BGaming, Red Tiger, Push Gaming, Quickspin</p>
+                    </div>
+
+                    <div class="disclaimer">
+                        19+, play responsibly. Standard KYC required.
+                    </div>
+
+                    <div class="vote-section">
+                        <span class="vote-label">Rate this Bonus</span>
+                        <div class="vote-buttons">
+                            <button class="vote-btn thumbs-up">
+                                👍 <span>28</span>
+                            </button>
+                            <button class="vote-btn thumbs-down">
+                                👎 <span>16</span>
+                            </button>
+                            <button class="compare-btn">COMPARE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(button) {
+            const card = button.closest('.card');
+            const details = card.querySelector('.card-details');
+            
+            button.classList.toggle('active');
+            details.classList.toggle('expanded');
+        }
+
+        // Get URL parameter
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get user's IP address (requires external API)
+        async function getUserIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error('Error getting IP:', error);
+                return 'unknown';
+            }
+        }
+
+        // Detect device type
+        function getDeviceType() {
+            const ua = navigator.userAgent;
+            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+                return "Tablet";
+            }
+            if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+                return "Mobile";
+            }
+            return "Desktop";
+        }
+
+        // Get browser name
+        function getBrowser() {
+            const ua = navigator.userAgent;
+            let browser = "Unknown";
+            
+            if (ua.indexOf("Firefox") > -1) {
+                browser = "Firefox";
+            } else if (ua.indexOf("SamsungBrowser") > -1) {
+                browser = "Samsung Browser";
+            } else if (ua.indexOf("Opera") > -1 || ua.indexOf("OPR") > -1) {
+                browser = "Opera";
+            } else if (ua.indexOf("Trident") > -1) {
+                browser = "Internet Explorer";
+            } else if (ua.indexOf("Edge") > -1) {
+                browser = "Edge";
+            } else if (ua.indexOf("Chrome") > -1) {
+                browser = "Chrome";
+            } else if (ua.indexOf("Safari") > -1) {
+                browser = "Safari";
+            }
+            
+            return browser;
+        }
+
+        // Get operating system
+        function getOS() {
+            const ua = navigator.userAgent;
+            if (ua.indexOf("Win") > -1) return "Windows";
+            if (ua.indexOf("Mac") > -1) return "MacOS";
+            if (ua.indexOf("Linux") > -1) return "Linux";
+            if (ua.indexOf("Android") > -1) return "Android";
+            if (ua.indexOf("iOS") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1) return "iOS";
+            return "Unknown";
+        }
+
+        // Send tracking data to your backend
+        async function sendTrackingData(eventType, casinoName = null) {
+            const offerParam = getUrlParameter('offer');
+            const userIP = await getUserIP();
+            const timestamp = new Date().toISOString();
+            
+            const trackingData = {
+                timestamp: timestamp,
+                offer_param: offerParam || 'none',
+                page_url: window.location.href,
+                ip_address: userIP,
+                device_type: getDeviceType(),
+                browser: getBrowser(),
+                operating_system: getOS(),
+                screen_resolution: `${window.screen.width}x${window.screen.height}`,
+                event_type: eventType, // 'page_view' or 'claim_click'
+                casino_name: casinoName,
+                referrer: document.referrer || 'direct'
+            };
+
+            console.log('Tracking Data:', trackingData);
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbwFWkTCBNoSxSXgr8kuf6ioX7XMi9TZT1ifUuTeCSUlvc_v2MdKYtUs2SO2UH_O08zb/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(trackingData)
+                });
+                
+                console.log('✅ Tracking data sent successfully to Google Sheets');
+                console.log('Event:', eventType, '| Casino:', casinoName || 'N/A');
+                
+            } catch (error) {
+                console.error('❌ Error sending to Google Sheets:', error);
+                console.error('Failed to track event:', eventType);
+            }
+
+            return trackingData;
+        }
+
+        // Track page view on load
+        window.addEventListener('load', async function() {
+            await sendTrackingData('page_view');
+        });
+
+        // Initialize claim buttons with parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const offerParam = getUrlParameter('offer');
+            const claimButtons = document.querySelectorAll('.btn-claim');
+            
+            claimButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    // Get casino name from the card
+                    const card = this.closest('.card');
+                    const casinoName = card.querySelector('.offer-title').textContent.trim();
+                    
+                    // Track the click event
+                    const trackingData = await sendTrackingData('claim_click', casinoName);
+                    
+                    // Get the base tracking URL from the data-tracking attribute
+                    let trackingUrl = this.getAttribute('data-tracking');
+                    
+                    // Add offer parameter to tracking URL
+                    if (offerParam) {
+                        trackingUrl += '&var1=' + encodeURIComponent(offerParam);
+                    } else {
+                        trackingUrl += '&var1=';
+                    }
+                    
+                    // Optional: Add additional tracking parameters to the URL
+                    trackingUrl += '&device=' + encodeURIComponent(trackingData.device_type);
+                    trackingUrl += '&ts=' + encodeURIComponent(new Date().getTime());
+                    
+                    console.log('Redirecting to:', trackingUrl);
+                    // Navigate to the tracking link
+                    window.location.href = trackingUrl;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
