@@ -663,6 +663,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Footer Section -->
+        <div style="text-align: center; margin-top: 50px; padding: 30px 20px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+            <p style="color: white; font-size: 1.1rem; margin: 0;">
+                Join <a href="#" id="wowPartnersLink" style="color: #FFD700; font-weight: bold; text-decoration: none; border-bottom: 2px solid #FFD700;">WOW Partners</a> and get revshare, CPA or hybrid deals.
+            </p>
+        </div>
     </div>
 
     <script>
@@ -820,7 +827,35 @@
                     window.location.href = trackingUrl;
                 });
             });
+
+            // Handle WOW Partners link click
+            const wowPartnersLink = document.getElementById('wowPartnersLink');
+            wowPartnersLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                console.log('WOW Partners clicked!');
+                console.log('Current offer parameter:', offerParam);
+                
+                // Build WOW Partners tracking URL
+                let wowUrl = 'https://wow.monalvor.com/?mid=100089_942685';
+                
+                // Add offer parameter if present
+                if (offerParam) {
+                    wowUrl += '&var1=' + encodeURIComponent(offerParam);
+                    console.log('✅ Added offer parameter to URL');
+                } else {
+                    wowUrl += '&var1=';
+                    console.log('⚠️ No offer parameter found');
+                }
+                
+                console.log('🔗 Final WOW Partners URL:', wowUrl);
+                console.log('Redirecting to WOW Partners...');
+                
+                // Navigate to WOW Partners
+                window.location.href = wowUrl;
+            });
         });
     </script>
 </body>
 </html>
+
